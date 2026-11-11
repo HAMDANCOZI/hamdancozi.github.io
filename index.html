@@ -102,7 +102,35 @@
         radial-gradient(ellipse at 10% 80%, rgba(57,198,255,.10), transparent 35%);
     }
 
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .75fr);
+      align-items: center;
+      gap: 55px;
+    }
+
     .hero-content { max-width: 790px; }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 390px;
+      justify-self: end;
+      padding: 9px;
+      border: 2px solid rgba(57,198,255,.75);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(22,135,255,.18), rgba(57,198,255,.05));
+      box-shadow: 0 20px 55px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 14px;
+    }
 
     .eyebrow {
       display: inline-block;
@@ -335,6 +363,16 @@
         border-bottom: 1px solid var(--border);
       }
 
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .hero-photo {
+        justify-self: center;
+        max-width: 320px;
+      }
+
       .nav-links.open { display: flex; }
       .menu-btn { display: block; }
       .about-grid { grid-template-columns: 1fr; }
@@ -379,7 +417,7 @@
 <main>
 
   <section class="hero" id="home">
-    <div class="container">
+    <div class="container hero-layout">
       <div class="hero-content">
         <div class="eyebrow" data-i18n="heroBadge">PORTFOLIO PROFESSIONNEL</div>
 
@@ -403,6 +441,9 @@
           <a href="#projects" class="btn btn-primary" data-i18n="heroButton1">Découvrir mes projets</a>
           <a href="#contact" class="btn btn-secondary" data-i18n="heroButton2">Me contacter</a>
         </div>
+      </div>
+      <div class="hero-photo">
+        <img src="photo-profil.jpeg" alt="Photo professionnelle d'Adom Hamdan Cozi">
       </div>
     </div>
   </section>
