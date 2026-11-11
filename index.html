@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio professionnel d'Adom Hamdan Cozi, technicien en électrotechnique, maintenance électrique, automatisme et informatique.">
+  <meta name="theme-color" content="#0b1428">
+  <title>Adom Hamdan Cozi | Portfolio professionnel</title>
+
+  <style>
+    :root {
+      --bg: #0b1428;
+      --surface: #111f38;
+      --surface2: #172944;
+      --blue: #1687ff;
+      --cyan: #39c6ff;
+      --white: #f4f8ff;
+      --muted: #a9bad1;
+      --border: rgba(255,255,255,.10);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,20,40,.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-btn, .menu-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: white;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .menu-btn { display: none; }
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 90px 0;
+      background:
+        radial-gradient(ellipse at 85% 25%, rgba(22,135,255,.20), transparent 40%),
+        radial-gradient(ellipse at 10% 80%, rgba(57,198,255,.10), transparent 35%);
+    }
+
+    .hero-content { max-width: 790px; }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--cyan);
+      background: rgba(22,135,255,.10);
+      border: 1px solid rgba(57,198,255,.25);
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+      display: block;
+    }
+
+    .hero h2 {
+      font-size: clamp(18px, 3vw, 25px);
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--blue), #1261d8);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    section { padding: 85px 0; }
+
+    .section-title { margin-bottom: 40px; }
+
+    .section-title small {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      margin-top: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: 12px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 25px;
+    }
+
+    .panel, .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 27px;
+    }
+
+    .panel p { color: var(--muted); }
+
+    .info-list { list-style: none; }
+
+    .info-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .info-list li:last-child { border: 0; }
+
+    .info-list strong { color: var(--cyan); }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--blue);
+    }
+
+    .card-icon {
+      font-size: 29px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 { font-size: 18px; margin-bottom: 10px; }
+
+    .card p { color: var(--muted); font-size: 14px; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 17px;
+    }
+
+    .tag {
+      background: var(--surface2);
+      color: #bfe8ff;
+      padding: 5px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+
+    .timeline {
+      border-left: 2px solid var(--blue);
+      padding-left: 25px;
+      margin-left: 10px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      left: -32px;
+      top: 8px;
+    }
+
+    .timeline-item small { color: var(--cyan); }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .project-note {
+      margin-top: 25px;
+      padding: 17px;
+      border-left: 3px solid var(--cyan);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact-box {
+      background: linear-gradient(130deg, #102a4c, #123e70);
+      border: 1px solid rgba(57,198,255,.25);
+      border-radius: 18px;
+      padding: 40px;
+    }
+
+    .contact-box p { color: #d1e3f7; margin: 15px 0 25px; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .contact-links a {
+      padding: 11px 15px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media(max-width: 850px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        padding: 25px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .about-grid { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media(max-width: 550px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 570px; padding: 65px 0; }
+      section { padding: 65px 0; }
+      .contact-box { padding: 25px; }
+      .logo { font-size: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">ADOM <span>COZI.</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-i18n="navHome">Accueil</a></li>
+        <li><a href="#about" data-i18n="navAbout">À propos</a></li>
+        <li><a href="#skills" data-i18n="navSkills">Compétences</a></li>
+        <li><a href="#experience" data-i18n="navExperience">Expériences</a></li>
+        <li><a href="#projects" data-i18n="navProjects">Projets</a></li>
+        <li><a href="#education" data-i18n="navEducation">Formation</a></li>
+        <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="lang-btn" id="langBtn" aria-label="Change language">EN</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow" data-i18n="heroBadge">PORTFOLIO PROFESSIONNEL</div>
+
+        <h1>
+          ADOM HAMDAN
+          <span>COZI</span>
+        </h1>
+
+        <h2 data-i18n="heroTitle">
+          Technicien en électrotechnique
+        </h2>
+
+        <p data-i18n="heroText">
+          Passionné par les systèmes électriques, la maintenance,
+          l'automatisme et les technologies informatiques.
+          Je développe mes compétences à travers des expériences
+          pratiques et des projets techniques.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary" data-i18n="heroButton1">Découvrir mes projets</a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="heroButton2">Me contacter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <small data-i18n="aboutLabel">PRÉSENTATION</small>
+        <h2 data-i18n="aboutTitle">À propos de moi</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel">
+          <p data-i18n="aboutText">
+            Technicien en électrotechnique disposant d'une expérience
+            pratique en maintenance électrique, installation
+            d'équipements techniques et maintenance informatique.
+            J'interviens dans le diagnostic des pannes, la réparation
+            et l'installation d'équipements électriques et
+            photovoltaïques. Rigoureux, autonome et orienté vers
+            la résolution de problèmes, je souhaite continuer à
+            développer mon expertise dans les domaines industriels
+            et énergétiques.
+          </p>
+        </div>
+
+        <div class="panel">
+          <ul class="info-list">
+            <li><strong data-i18n="locationLabel">Localisation :</strong> Dakar, Sénégal</li>
+            <li><strong data-i18n="specialityLabel">Spécialité :</strong> <span data-i18n="specialityValue">Électrotechnique</span></li>
+            <li><strong data-i18n="fieldsLabel">Domaines :</strong> <span data-i18n="fieldsValue">Électricité, automatisme, informatique</span></li>
+            <li><strong data-i18n="languageLabel">Langues :</strong> <span data-i18n="languageValue">Français, anglais</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">
+        <small data-i18n="skillsLabel">SAVOIR-FAIRE</small>
+        <h2 data-i18n="skillsTitle">Mes compétences techniques</h2>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-icon">⚡</div>
+          <h3 data-i18n="skill1Title">Électrotechnique</h3>
+          <p data-i18n="skill1Text">Installation électrique domestique et industrielle, diagnostic, maintenance et dépannage.</p>
+          <div class="tags">
+            <span class="tag">Installation</span>
+            <span class="tag">Maintenance</span>
+            <span class="tag">Diagnostic</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">☀️</div>
+          <h3 data-i18n="skill2Title">Énergie solaire</h3>
+          <p data-i18n="skill2Text">Connaissances en installations et équipements photovoltaïques.</p>
+          <div class="tags">
+            <span class="tag">Photovoltaïque</span>
+            <span class="tag">Énergie</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">⚙️</div>
+          <h3 data-i18n="skill3Title">Automatisme</h3>
+          <p data-i18n="skill3Text">Étude et réalisation de systèmes automatisés et projets avec microcontrôleurs.</p>
+          <div class="tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">Zelio</span>
+            <span class="tag">Proteus</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">💻</div>
+          <h3 data-i18n="skill4Title">Maintenance informatique</h3>
+          <p data-i18n="skill4Text">Diagnostic, réparation, entretien et installation de systèmes d'exploitation.</p>
+          <div class="tags">
+            <span class="tag">Windows</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Dépannage</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📐</div>
+          <h3 data-i18n="skill5Title">Logiciels techniques</h3>
+          <p data-i18n="skill5Text">Utilisation d'outils de conception, de simulation et de calcul technique.</p>
+          <div class="tags">
+            <span class="tag">AutoCAD</span>
+            <span class="tag">Dialux</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">MPLAB</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🛠️</div>
+          <h3 data-i18n="skill6Title">Installation technique</h3>
+          <p data-i18n="skill6Text">Pose, raccordement, assemblage et entretien d'équipements techniques.</p>
+          <div class="tags">
+            <span class="tag">Bâtiment</span>
+            <span class="tag">Raccordement</span>
+            <span class="tag">Sécurité</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-title">
+        <small data-i18n="experienceLabel">PARCOURS PROFESSIONNEL</small>
+        <h2 data-i18n="experienceTitle">Mes expériences</h2>
+      </div>
+
+      <div class="panel">
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <small>2018 – Présent</small>
+            <h3 data-i18n="job1Title">Assistant technicien électricien – Freelance</h3>
+            <p data-i18n="job1Text">Diagnostic de pannes, remise en état et remplacement d'équipements électriques.</p>
+          </div>
+
+          <div class="timeline-item">
+            <small>2018 – Présent</small>
+            <h3 data-i18n="job2Title">Aide électricien bâtiment – Freelance</h3>
+            <p data-i18n="job2Text">Préparation de chantiers, pose et raccordement d'appareillages, assemblage et sécurité.</p>
+          </div>
+
+          <div class="timeline-item">
+            <small>2017 – Présent</small>
+            <h3 data-i18n="job3Title">Maintenance informatique – Freelance</h3>
+            <p data-i18n="job3Text">Réparation d'ordinateurs portables et fixes, dépannage et installation de systèmes d'exploitation Windows, Linux et macOS.</p>
+          </div>
+
+          <div class="timeline-item">
+            <small>2018 – 2022</small>
+            <h3 data-i18n="job4Title">Montage d'antennes paraboliques – Freelance</h3>
+            <p data-i18n="job4Text">Montage, entretien et dépannage d'antennes paraboliques.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">
+        <small data-i18n="projectsLabel">RÉALISATIONS</small>
+        <h2 data-i18n="projectsTitle">Projets techniques</h2>
+        <p data-i18n="projectsIntro">Une sélection de travaux académiques et techniques à découvrir.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-icon">🚧</div>
+          <h3 data-i18n="project1Title">Barrière automatique avec Arduino</h3>
+          <p data-i18n="project1Text">Projet académique de conception d'un système de commande automatisée à l'aide d'Arduino.</p>
+          <div class="tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">Automatisme</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🔌</div>
+          <h3 data-i18n="project2Title">Étude de réseau électrique</h3>
+          <p data-i18n="project2Text">Travail académique portant sur l'étude et l'analyse d'un réseau électrique.</p>
+          <div class="tags">
+            <span class="tag">Électricité</span>
+            <span class="tag">Étude technique</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">♻️</div>
+          <h3 data-i18n="project3Title">Efficacité énergétique</h3>
+          <p data-i18n="project3Text">Travaux académiques autour de l'analyse et de l'amélioration de l'efficacité énergétique.</p>
+          <div class="tags">
+            <span class="tag">Énergie</span>
+            <span class="tag">Analyse</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-note" data-i18n="projectNote">
+        Cette sélection sera enrichie avec des photographies, schémas, descriptions détaillées et résultats vérifiés des réalisations.
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-title">
+        <small data-i18n="educationLabel">ÉTUDES</small>
+        <h2 data-i18n="educationTitle">Formation académique</h2>
+      </div>
+
+      <div class="panel">
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <small>2023 – Présent</small>
+            <h3 data-i18n="education1Title">Licence en électrotechnique</h3>
+            <p>ESEBAT – Dakar, Sénégal</p>
+          </div>
+
+          <div class="timeline-item">
+            <small>2021 – 2022</small>
+            <h3 data-i18n="education2Title">Licence 1 en génie électrique et informatique industrielle</h3>
+            <p>ESIG Global Success</p>
+          </div>
+
+          <div class="timeline-item">
+            <small>2017 – 2021</small>
+            <h3 data-i18n="education3Title">Baccalauréat en électrotechnique</h3>
+            <p>LETP – Lomé, Togo</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="section-title">
+          <small data-i18n="contactLabel">PRENONS CONTACT</small>
+          <h2 data-i18n="contactTitle">Construisons ensemble de nouveaux projets</h2>
+        </div>
+
+        <p data-i18n="contactText">
+          Je suis ouvert aux opportunités professionnelles, stages,
+          collaborations techniques et échanges dans mes domaines de compétence.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:cozi.hamdan@outlook.com">✉ Email</a>
+          <a href="tel:+221772219800">☎ Téléphone</a>
+          <a href="https://www.linkedin.com/in/adom-hamdan-cozi" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> ADOM HAMDAN COZI ·
+  <span data-i18n="footerText">Tous droits réservés.</span>
+</footer>
+
+<script>
+  const translations = {
+    fr: {
+      navHome:"Accueil", navAbout:"À propos", navSkills:"Compétences",
+      navExperience:"Expériences", navProjects:"Projets",
+      navEducation:"Formation", navContact:"Contact",
+      heroBadge:"PORTFOLIO PROFESSIONNEL",
+      heroTitle:"Technicien en électrotechnique",
+      heroText:"Passionné par les systèmes électriques, la maintenance, l'automatisme et les technologies informatiques. Je développe mes compétences à travers des expériences pratiques et des projets techniques.",
+      heroButton1:"Découvrir mes projets", heroButton2:"Me contacter",
+      aboutLabel:"PRÉSENTATION", aboutTitle:"À propos de moi",
+      aboutText:"Technicien en électrotechnique disposant d'une expérience pratique en maintenance électrique, installation d'équipements techniques et maintenance informatique. J'interviens dans le diagnostic des pannes, la réparation et l'installation d'équipements électriques et photovoltaïques. Rigoureux, autonome et orienté vers la résolution de problèmes, je souhaite continuer à développer mon expertise dans les domaines industriels et énergétiques.",
+      locationLabel:"Localisation :", specialityLabel:"Spécialité :",
+      specialityValue:"Électrotechnique", fieldsLabel:"Domaines :",
+      fieldsValue:"Électricité, automatisme, informatique",
+      languageLabel:"Langues :", languageValue:"Français, anglais",
+      skillsLabel:"SAVOIR-FAIRE", skillsTitle:"Mes compétences techniques",
+      skill1Title:"Électrotechnique", skill1Text:"Installation électrique domestique et industrielle, diagnostic, maintenance et dépannage.",
+      skill2Title:"Énergie solaire", skill2Text:"Connaissances en installations et équipements photovoltaïques.",
+      skill3Title:"Automatisme", skill3Text:"Étude et réalisation de systèmes automatisés et projets avec microcontrôleurs.",
+      skill4Title:"Maintenance informatique", skill4Text:"Diagnostic, réparation, entretien et installation de systèmes d'exploitation.",
+      skill5Title:"Logiciels techniques", skill5Text:"Utilisation d'outils de conception, de simulation et de calcul technique.",
+      skill6Title:"Installation technique", skill6Text:"Pose, raccordement, assemblage et entretien d'équipements techniques.",
+      experienceLabel:"PARCOURS PROFESSIONNEL", experienceTitle:"Mes expériences",
+      job1Title:"Assistant technicien électricien – Freelance",
+      job1Text:"Diagnostic de pannes, remise en état et remplacement d'équipements électriques.",
+      job2Title:"Aide électricien bâtiment – Freelance",
+      job2Text:"Préparation de chantiers, pose et raccordement d'appareillages, assemblage et sécurité.",
+      job3Title:"Maintenance informatique – Freelance",
+      job3Text:"Réparation d'ordinateurs portables et fixes, dépannage et installation de systèmes d'exploitation Windows, Linux et macOS.",
+      job4Title:"Montage d'antennes paraboliques – Freelance",
+      job4Text:"Montage, entretien et dépannage d'antennes paraboliques.",
+      projectsLabel:"RÉALISATIONS", projectsTitle:"Projets techniques",
+      projectsIntro:"Une sélection de travaux académiques et techniques à découvrir.",
+      project1Title:"Barrière automatique avec Arduino",
+      project1Text:"Projet académique de conception d'un système de commande automatisée à l'aide d'Arduino.",
+      project2Title:"Étude de réseau électrique",
+      project2Text:"Travail académique portant sur l'étude et l'analyse d'un réseau électrique.",
+      project3Title:"Efficacité énergétique",
+      project3Text:"Travaux académiques autour de l'analyse et de l'amélioration de l'efficacité énergétique.",
+      projectNote:"Cette sélection sera enrichie avec des photographies, schémas, descriptions détaillées et résultats vérifiés des réalisations.",
+      educationLabel:"ÉTUDES", educationTitle:"Formation académique",
+      education1Title:"Licence en électrotechnique",
+      education2Title:"Licence 1 en génie électrique et informatique industrielle",
+      education3Title:"Baccalauréat en électrotechnique",
+      contactLabel:"PRENONS CONTACT",
+      contactTitle:"Construisons ensemble de nouveaux projets",
+      contactText:"Je suis ouvert aux opportunités professionnelles, stages, collaborations techniques et échanges dans mes domaines de compétence.",
+      footerText:"Tous droits réservés."
+    },
+
+    en: {
+      navHome:"Home", navAbout:"About", navSkills:"Skills",
+      navExperience:"Experience", navProjects:"Projects",
+      navEducation:"Education", navContact:"Contact",
+      heroBadge:"PROFESSIONAL PORTFOLIO",
+      heroTitle:"Electrical Engineering Technician",
+      heroText:"Passionate about electrical systems, maintenance, automation and information technology. I develop my skills through practical experience and technical projects.",
+      heroButton1:"Explore my projects", heroButton2:"Contact me",
+      aboutLabel:"INTRODUCTION", aboutTitle:"About me",
+      aboutText:"Electrical engineering technician with practical experience in electrical maintenance, technical equipment installation and IT maintenance. My work includes fault diagnosis, repairs and the installation of electrical and photovoltaic equipment. Detail-oriented, independent and solution-driven, I aim to continue developing my expertise in industrial and energy-related fields.",
+      locationLabel:"Location:", specialityLabel:"Specialty:",
+      specialityValue:"Electrical Engineering", fieldsLabel:"Fields:",
+      fieldsValue:"Electrical systems, automation, IT",
+      languageLabel:"Languages:", languageValue:"French, English",
+      skillsLabel:"EXPERTISE", skillsTitle:"Technical skills",
+      skill1Title:"Electrical Engineering", skill1Text:"Residential and industrial electrical installation, fault diagnosis, maintenance and troubleshooting.",
+      skill2Title:"Solar Energy", skill2Text:"Knowledge of photovoltaic installations and equipment.",
+      skill3Title:"Automation", skill3Text:"Study and development of automated systems and microcontroller projects.",
+      skill4Title:"IT Maintenance", skill4Text:"Computer diagnosis, repair, maintenance and operating system installation.",
+      skill5Title:"Technical Software", skill5Text:"Use of design, simulation and technical calculation tools.",
+      skill6Title:"Technical Installation", skill6Text:"Installation, wiring, assembly and maintenance of technical equipment.",
+      experienceLabel:"CAREER", experienceTitle:"Professional experience",
+      job1Title:"Assistant Electrical Technician – Freelance",
+      job1Text:"Fault diagnosis, repair and replacement of electrical equipment.",
+      job2Title:"Building Electrician Assistant – Freelance",
+      job2Text:"Site preparation, installation and wiring of electrical devices, assembly and safety.",
+      job3Title:"IT Maintenance – Freelance",
+      job3Text:"Repair of laptops and desktop computers, troubleshooting and installation of Windows, Linux and macOS operating systems.",
+      job4Title:"Satellite Dish Installation – Freelance",
+      job4Text:"Installation, maintenance and troubleshooting of satellite dishes.",
+      projectsLabel:"ACHIEVEMENTS", projectsTitle:"Technical projects",
+      projectsIntro:"A selection of academic and technical projects.",
+      project1Title:"Arduino Automatic Barrier",
+      project1Text:"Academic project involving the design of an automated control system using Arduino.",
+      project2Title:"Electrical Network Study",
+      project2Text:"Academic work focused on the study and analysis of an electrical network.",
+      project3Title:"Energy Efficiency",
+      project3Text:"Academic work focused on the analysis and improvement of energy efficiency.",
+      projectNote:"This selection will be expanded with photographs, diagrams, detailed descriptions and verified project results.",
+      educationLabel:"ACADEMIC BACKGROUND", educationTitle:"Education",
+      education1Title:"Bachelor's Degree in Electrical Engineering",
+      education2Title:"First Year – Electrical Engineering and Industrial Computing",
+      education3Title:"Technical Baccalaureate in Electrical Engineering",
+      contactLabel:"GET IN TOUCH",
+      contactTitle:"Let's build new projects together",
+      contactText:"I am open to professional opportunities, internships, technical collaborations and discussions in my areas of expertise.",
+      footerText:"All rights reserved."
+    }
+  };
+
+  let currentLang = "fr";
+
+  const langBtn = document.getElementById("langBtn");
+
+  langBtn.addEventListener("click", () => {
+    currentLang = currentLang === "fr" ? "en" : "fr";
+
+    document.documentElement.lang = currentLang;
+
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+      const key = element.dataset.i18n;
+      if (translations[currentLang][key]) {
+        element.textContent = translations[currentLang][key];
+      }
+    });
+
+    langBtn.textContent = currentLang === "fr" ? "EN" : "FR";
+    document.title = currentLang === "fr"
+      ? "Adom Hamdan Cozi | Portfolio professionnel"
+      : "Adom Hamdan Cozi | Professional Portfolio";
+  });
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
