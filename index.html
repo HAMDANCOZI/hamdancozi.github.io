@@ -492,7 +492,7 @@
 
       <div class="nav-actions">
         <button class="lang-btn" id="langBtn" aria-label="Change language">EN</button>
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
       </div>
     </nav>
   </div>
@@ -775,7 +775,7 @@
 
           <div class="timeline-item">
             <small>2023 – Présent</small>
-            <h3 data-i18n="education1Title">Licence en électrotechnique</h3>
+            <h3 data-i18n="education1Title">Licence en électrotechnique (en cours)</h3>
             <p>ESEBAT – Dakar, Sénégal</p>
           </div>
 
@@ -879,14 +879,14 @@
       galleryIntro:"Des images de mes interventions, de mon prototype Arduino et de mes visites pédagogiques. Sélectionnez une photo pour l’agrandir.",
       galleryHint:"Les visites d’entreprise sont présentées comme des expériences pédagogiques. Les interventions photographiées correspondent à des travaux réalisés par mes soins.",
       project1Title:"Barrière automatique avec Arduino",
-      project1Text:"Projet académique de conception d'un système de commande automatisée à l'aide d'Arduino.",
+      project1Text:"Projet académique de conception d'un système de commande automatisée à l'aide d'Arduino. Le prototype a été réalisé et fonctionnait correctement lors des essais.",
       project2Title:"Étude de réseau électrique",
       project2Text:"Travail académique portant sur l'étude et l'analyse d'un réseau électrique.",
       project3Title:"Efficacité énergétique",
       project3Text:"Travaux académiques autour de l'analyse et de l'amélioration de l'efficacité énergétique.",
       projectNote:"La galerie ci-dessous présente des photographies originales des interventions, du prototype Arduino et des visites techniques.",
       educationLabel:"ÉTUDES", educationTitle:"Formation académique",
-      education1Title:"Licence en électrotechnique",
+      education1Title:"Licence en électrotechnique (en cours)",
       education2Title:"Licence 1 en génie électrique et informatique industrielle",
       education3Title:"Baccalauréat en électrotechnique",
       contactLabel:"PRENONS CONTACT",
@@ -947,7 +947,7 @@
       galleryIntro:"Photos of my field work, Arduino prototype and educational visits. Select a photo to enlarge it.",
       galleryHint:"Company visits are presented as educational experiences. The photographed interventions are work carried out by me.",
       project1Title:"Arduino Automatic Barrier",
-      project1Text:"Academic project involving the design of an automated control system using Arduino.",
+      project1Text:"Academic project involving the design of an automated control system using Arduino. The prototype was built and operated correctly during testing.",
       project2Title:"Electrical Installations",
       project2Text:"Practical work carried out on electrical installations, including site preparation and installation tasks.",
       project3Title:"IT Maintenance",
@@ -955,10 +955,10 @@
       project4Title:"Satellite Dish Installation",
       project4Text:"Practical experience in mounting, securing, aligning and connecting satellite dishes (2018–2022).",
       project5Title:"Industrial Technical Visits",
-      project5Text:"Educational visits to industrial facilities at CIMTOGO and a thermal power station in the Baguida area (Kékéli identification remains to be confirmed).",
+      project5Text:"Educational visits to industrial facilities at CIMTOGO and a thermal power station in Togo.",
       projectNote:"Academic practical work is distinguished from field interventions and educational visits.",
       educationLabel:"ACADEMIC BACKGROUND", educationTitle:"Education",
-      education1Title:"Bachelor's Degree in Electrical Engineering",
+      education1Title:"Bachelor's studies in Electrical Engineering (in progress)",
       education2Title:"First Year – Electrical Engineering and Industrial Computing",
       education3Title:"Technical Baccalaureate in Electrical Engineering",
       contactLabel:"GET IN TOUCH",
@@ -1003,12 +1003,16 @@
   const navLinks = document.getElementById("navLinks");
 
   menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
+    const isOpen = navLinks.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
   });
 
   document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-label", "Ouvrir le menu");
     });
   });
 
