@@ -678,7 +678,7 @@
           </div>
 
         </div>
-        <p class="project-note" data-i18n="experiencePhotoNote">Mes premières expériences pratiques remontent à 2018. Les photographies présentées dans la galerie documentent certaines de mes réalisations à partir de 2021.</p>
+        
       </div>
     </div>
   </section>
@@ -850,7 +850,6 @@
       skill5Title:"Logiciels techniques", skill5Text:"Utilisation d'outils de conception, de simulation et de calcul technique.",
       skill6Title:"Installation technique", skill6Text:"Pose, raccordement, assemblage et entretien d'équipements techniques.",
       experienceLabel:"PARCOURS PROFESSIONNEL", experienceTitle:"Mes expériences",
-      experiencePhotoNote:"Mes premières expériences pratiques remontent à 2018. Les photographies présentées dans la galerie documentent certaines de mes réalisations à partir de 2021.",
       job1Title:"Assistant technicien électricien – Freelance",
       job1Text:"Diagnostic de pannes, remise en état et remplacement d'équipements électriques.",
       job2Title:"Aide électricien bâtiment – Freelance",
@@ -882,10 +881,6 @@
       galleryHint:"Les visites d’entreprise sont présentées comme des expériences pédagogiques. Les interventions photographiées correspondent à des travaux réalisés par mes soins.",
       project1Title:"Barrière automatique avec Arduino",
       project1Text:"Projet académique de conception d'un système de commande automatisée à l'aide d'Arduino. Le prototype a été réalisé et fonctionnait correctement lors des essais.",
-      project2Title:"Étude de réseau électrique",
-      project2Text:"Travail académique portant sur l'étude et l'analyse d'un réseau électrique.",
-      project3Title:"Efficacité énergétique",
-      project3Text:"Travaux académiques autour de l'analyse et de l'amélioration de l'efficacité énergétique.",
       projectNote:"La galerie ci-dessous présente des photographies originales des interventions, du prototype Arduino et des visites techniques.",
       educationLabel:"ÉTUDES", educationTitle:"Formation académique",
       education1Title:"Licence en électrotechnique (en cours)",
@@ -919,7 +914,6 @@
       skill5Title:"Technical Software", skill5Text:"Use of design, simulation and technical calculation tools.",
       skill6Title:"Technical Installation", skill6Text:"Installation, wiring, assembly and maintenance of technical equipment.",
       experienceLabel:"CAREER", experienceTitle:"Professional experience",
-      experiencePhotoNote:"My first hands-on experience dates back to 2018. The photographs in the gallery document some of my work from 2021 onward.",
       job1Title:"Assistant Electrical Technician – Freelance",
       job1Text:"Fault diagnosis, repair and replacement of electrical equipment.",
       job2Title:"Building Electrician Assistant – Freelance",
@@ -951,10 +945,6 @@
       galleryHint:"Company visits are presented as educational experiences. The photographed interventions are work carried out by me.",
       project1Title:"Arduino Automatic Barrier",
       project1Text:"Academic project involving the design of an automated control system using Arduino. The prototype was built and operated correctly during testing.",
-      project2Title:"Electrical Installations",
-      project2Text:"Practical work carried out on electrical installations, including site preparation and installation tasks.",
-      project3Title:"IT Maintenance",
-      project3Text:"Personal work involving computer diagnosis, disassembly, servicing, troubleshooting and operating system installation.",
       project4Title:"Satellite Dish Installation",
       project4Text:"Practical experience in mounting, securing, aligning and connecting satellite dishes (2018–2022).",
       project5Title:"Industrial Technical Visits",
@@ -974,6 +964,8 @@
   let currentLang = "fr";
 
   const langBtn = document.getElementById("langBtn");
+
+  langBtn.setAttribute("aria-label", "Passer en anglais");
 
   langBtn.addEventListener("click", () => {
     currentLang = currentLang === "fr" ? "en" : "fr";
@@ -997,6 +989,12 @@
       if (image) image.alt = caption;
     });
     langBtn.textContent = currentLang === "fr" ? "EN" : "FR";
+    langBtn.setAttribute("aria-label", currentLang === "fr" ? "Passer en anglais" : "Switch to French");
+    updateMenuButtonLabel();
+    document.getElementById("lightbox").setAttribute("aria-label", currentLang === "fr" ? "Photo agrandie" : "Enlarged photo");
+    document.querySelector('meta[name="description"]').content = currentLang === "fr"
+      ? "Portfolio professionnel d'Adom Hamdan Cozi, technicien en électrotechnique, maintenance électrique, automatisme et informatique."
+      : "Professional portfolio of Adom Hamdan Cozi, electrical engineering technician specializing in electrical maintenance, automation and IT.";
     document.title = currentLang === "fr"
       ? "Adom Hamdan Cozi | Portfolio professionnel"
       : "Adom Hamdan Cozi | Professional Portfolio";
@@ -1004,18 +1002,24 @@
 
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
+  const updateMenuButtonLabel = () => {
+    const isOpen = navLinks.classList.contains("open");
+    const labels = currentLang === "fr"
+      ? { open: "Ouvrir le menu", close: "Fermer le menu" }
+      : { open: "Open menu", close: "Close menu" };
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? labels.close : labels.open);
+  };
 
   menuBtn.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(isOpen));
-    menuBtn.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+    navLinks.classList.toggle("open");
+    updateMenuButtonLabel();
   });
 
   document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded", "false");
-      menuBtn.setAttribute("aria-label", "Ouvrir le menu");
+      updateMenuButtonLabel();
     });
   });
 
