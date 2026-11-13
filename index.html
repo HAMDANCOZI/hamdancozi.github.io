@@ -310,6 +310,77 @@
       margin-top: 5px;
     }
 
+
+    .gallery-group { margin-top: 34px; }
+    .gallery-group h3 { font-size: 20px; margin-bottom: 16px; color: var(--cyan); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--surface);
+      cursor: zoom-in;
+      transition: .25s;
+    }
+    .gallery-item:hover { transform: translateY(-4px); border-color: var(--blue); }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: var(--surface2);
+    }
+    .gallery-item figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .gallery-hint { color: var(--muted); font-size: 13px; margin-top: 12px; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(2, 8, 18, .94);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: min(1100px, 94vw);
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      color: white;
+      background: var(--surface);
+      font-size: 25px;
+      cursor: pointer;
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 18px;
+      left: 5%;
+      right: 5%;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+    }
+
     .project-note {
       margin-top: 25px;
       padding: 17px;
@@ -402,6 +473,7 @@
         <li><a href="#skills" data-i18n="navSkills">Compétences</a></li>
         <li><a href="#experience" data-i18n="navExperience">Expériences</a></li>
         <li><a href="#projects" data-i18n="navProjects">Projets</a></li>
+        <li><a href="#gallery" data-i18n="navGallery">Galerie</a></li>
         <li><a href="#education" data-i18n="navEducation">Formation</a></li>
         <li><a href="#contact" data-i18n="navContact">Contact</a></li>
       </ul>
@@ -644,6 +716,19 @@
     </div>
   </section>
 
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <small data-i18n="galleryLabel">PHOTOGRAPHIES</small>
+        <h2 data-i18n="galleryTitle">Galerie de mes réalisations</h2>
+        <p data-i18n="galleryIntro">Des images de mes interventions, de mon prototype Arduino et de mes visites pédagogiques. Sélectionnez une photo pour l’agrandir.</p>
+      </div><div class="gallery-group"><h3 data-fr="Installation d’antennes paraboliques" data-en="Satellite dish installations">Installation d’antennes paraboliques</h3><div class="gallery-grid"><figure class="gallery-item" tabindex="0" role="button" aria-label="Préparation et montage de l’antenne" data-lightbox-caption-fr="Préparation et montage de l’antenne" data-lightbox-caption-en="Preparing and mounting the satellite dish"><img src="IMG_20211223_110427_122.jpg" alt="Préparation et montage de l’antenne" loading="lazy"><figcaption data-fr="Préparation et montage de l’antenne" data-en="Preparing and mounting the satellite dish">Préparation et montage de l’antenne</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Mise en place de l’installation" data-lightbox-caption-fr="Mise en place de l’installation" data-lightbox-caption-en="Positioning the installation"><img src="IMG_20211223_110436_344.jpg" alt="Mise en place de l’installation" loading="lazy"><figcaption data-fr="Mise en place de l’installation" data-en="Positioning the installation">Mise en place de l’installation</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Travaux d’installation sur site" data-lightbox-caption-fr="Travaux d’installation sur site" data-lightbox-caption-en="On-site installation work"><img src="IMG_20211223_112058_204.jpg" alt="Travaux d’installation sur site" loading="lazy"><figcaption data-fr="Travaux d’installation sur site" data-en="On-site installation work">Travaux d’installation sur site</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Réglage et fixation de l’antenne" data-lightbox-caption-fr="Réglage et fixation de l’antenne" data-lightbox-caption-en="Dish adjustment and fastening"><img src="IMG_20211223_160235_846.jpg" alt="Réglage et fixation de l’antenne" loading="lazy"><figcaption data-fr="Réglage et fixation de l’antenne" data-en="Dish adjustment and fastening">Réglage et fixation de l’antenne</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Installation terminée – décembre 2021" data-lightbox-caption-fr="Installation terminée – décembre 2021" data-lightbox-caption-en="Completed installation – December 2021"><img src="IMG_20211223_160237_593.jpg" alt="Installation terminée – décembre 2021" loading="lazy"><figcaption data-fr="Installation terminée – décembre 2021" data-en="Completed installation – December 2021">Installation terminée – décembre 2021</figcaption></figure></div></div><div class="gallery-group"><h3 data-fr="Prototype de barrière automatique – Arduino" data-en="Automatic barrier prototype – Arduino">Prototype de barrière automatique – Arduino</h3><div class="gallery-grid"><figure class="gallery-item" tabindex="0" role="button" aria-label="Présentation du prototype réalisé" data-lightbox-caption-fr="Présentation du prototype réalisé" data-lightbox-caption-en="Overview of the completed prototype"><img src="IMG_20220428_165138_393.jpg" alt="Présentation du prototype réalisé" loading="lazy"><figcaption data-fr="Présentation du prototype réalisé" data-en="Overview of the completed prototype">Présentation du prototype réalisé</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Mécanisme de la barrière" data-lightbox-caption-fr="Mécanisme de la barrière" data-lightbox-caption-en="Barrier mechanism"><img src="IMG_20220428_165155_275.jpg" alt="Mécanisme de la barrière" loading="lazy"><figcaption data-fr="Mécanisme de la barrière" data-en="Barrier mechanism">Mécanisme de la barrière</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Circuit et commande du système" data-lightbox-caption-fr="Circuit et commande du système" data-lightbox-caption-en="System circuit and control"><img src="IMG_20220428_165619_280.jpg" alt="Circuit et commande du système" loading="lazy"><figcaption data-fr="Circuit et commande du système" data-en="System circuit and control">Circuit et commande du système</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Prototype fonctionnel en démonstration" data-lightbox-caption-fr="Prototype fonctionnel en démonstration" data-lightbox-caption-en="Working prototype demonstration"><img src="IMG_20220428_165639_636.jpg" alt="Prototype fonctionnel en démonstration" loading="lazy"><figcaption data-fr="Prototype fonctionnel en démonstration" data-en="Working prototype demonstration">Prototype fonctionnel en démonstration</figcaption></figure></div></div><div class="gallery-group"><h3 data-fr="Visite pédagogique – CIMTOGO" data-en="Educational visit – CIMTOGO">Visite pédagogique – CIMTOGO</h3><div class="gallery-grid"><figure class="gallery-item" tabindex="0" role="button" aria-label="Découverte des installations industrielles" data-lightbox-caption-fr="Découverte des installations industrielles" data-lightbox-caption-en="Exploring the industrial facilities"><img src="IMG_20220506_105521_655.jpg" alt="Découverte des installations industrielles" loading="lazy"><figcaption data-fr="Découverte des installations industrielles" data-en="Exploring the industrial facilities">Découverte des installations industrielles</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Observation des équipements de production" data-lightbox-caption-fr="Observation des équipements de production" data-lightbox-caption-en="Observing production equipment"><img src="IMG_20220506_110344_190.jpg" alt="Observation des équipements de production" loading="lazy"><figcaption data-fr="Observation des équipements de production" data-en="Observing production equipment">Observation des équipements de production</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Visite des zones techniques" data-lightbox-caption-fr="Visite des zones techniques" data-lightbox-caption-en="Visit to technical areas"><img src="IMG_20220506_113735_038.jpg" alt="Visite des zones techniques" loading="lazy"><figcaption data-fr="Visite des zones techniques" data-en="Visit to technical areas">Visite des zones techniques</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Découverte des procédés industriels" data-lightbox-caption-fr="Découverte des procédés industriels" data-lightbox-caption-en="Discovering industrial processes"><img src="IMG_20220506_113758_102.jpg" alt="Découverte des procédés industriels" loading="lazy"><figcaption data-fr="Découverte des procédés industriels" data-en="Discovering industrial processes">Découverte des procédés industriels</figcaption></figure></div></div><div class="gallery-group"><h3 data-fr="Interventions et installations électriques" data-en="Electrical work and installations">Interventions et installations électriques</h3><div class="gallery-grid"><figure class="gallery-item" tabindex="0" role="button" aria-label="Intervention électrique – travaux pratiques" data-lightbox-caption-fr="Intervention électrique – travaux pratiques" data-lightbox-caption-en="Electrical work – practical intervention"><img src="WhatsApp%20Image%202026-11-11%20at%2022.54.54.jpg" alt="Intervention électrique – travaux pratiques" loading="lazy"><figcaption data-fr="Intervention électrique – travaux pratiques" data-en="Electrical work – practical intervention">Intervention électrique – travaux pratiques</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Installation et raccordement" data-lightbox-caption-fr="Installation et raccordement" data-lightbox-caption-en="Installation and wiring"><img src="WhatsApp%20Image%202026-11-11%20at%2022.54.55%20%281%29.jpg" alt="Installation et raccordement" loading="lazy"><figcaption data-fr="Installation et raccordement" data-en="Installation and wiring">Installation et raccordement</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Travaux d’installation sur chantier" data-lightbox-caption-fr="Travaux d’installation sur chantier" data-lightbox-caption-en="Installation work on site"><img src="WhatsApp%20Image%202026-11-11%20at%2022.54.55%20%284%29.jpg" alt="Travaux d’installation sur chantier" loading="lazy"><figcaption data-fr="Travaux d’installation sur chantier" data-en="Installation work on site">Travaux d’installation sur chantier</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Réalisation électrique" data-lightbox-caption-fr="Réalisation électrique" data-lightbox-caption-en="Electrical installation"><img src="WhatsApp%20Image%202026-11-11%20at%2022.54.55%20%285%29.jpg" alt="Réalisation électrique" loading="lazy"><figcaption data-fr="Réalisation électrique" data-en="Electrical installation">Réalisation électrique</figcaption></figure></div></div><div class="gallery-group"><h3 data-fr="Maintenance informatique" data-en="IT maintenance">Maintenance informatique</h3><div class="gallery-grid"><figure class="gallery-item" tabindex="0" role="button" aria-label="Diagnostic et entretien informatique" data-lightbox-caption-fr="Diagnostic et entretien informatique" data-lightbox-caption-en="Computer diagnostics and maintenance"><img src="WhatsApp%20Image%202026-11-11%20at%2023.04.36.jpg" alt="Diagnostic et entretien informatique" loading="lazy"><figcaption data-fr="Diagnostic et entretien informatique" data-en="Computer diagnostics and maintenance">Diagnostic et entretien informatique</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Intervention sur ordinateur" data-lightbox-caption-fr="Intervention sur ordinateur" data-lightbox-caption-en="Computer repair work"><img src="WhatsApp%20Image%202026-11-11%20at%2023.04.38%20%286%29.jpg" alt="Intervention sur ordinateur" loading="lazy"><figcaption data-fr="Intervention sur ordinateur" data-en="Computer repair work">Intervention sur ordinateur</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Démontage et vérification des composants" data-lightbox-caption-fr="Démontage et vérification des composants" data-lightbox-caption-en="Disassembly and component inspection"><img src="WhatsApp%20Image%202026-11-11%20at%2023.04.38.jpg" alt="Démontage et vérification des composants" loading="lazy"><figcaption data-fr="Démontage et vérification des composants" data-en="Disassembly and component inspection">Démontage et vérification des composants</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Maintenance matérielle" data-lightbox-caption-fr="Maintenance matérielle" data-lightbox-caption-en="Hardware maintenance"><img src="WhatsApp%20Image%202026-11-11%20at%2023.04.45%20%2813%29.jpg" alt="Maintenance matérielle" loading="lazy"><figcaption data-fr="Maintenance matérielle" data-en="Hardware maintenance">Maintenance matérielle</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Travaux de réparation" data-lightbox-caption-fr="Travaux de réparation" data-lightbox-caption-en="Repair work"><img src="WhatsApp%20Image%202026-11-11%20at%2023.04.45%20%2826%29.jpg" alt="Travaux de réparation" loading="lazy"><figcaption data-fr="Travaux de réparation" data-en="Repair work">Travaux de réparation</figcaption></figure><figure class="gallery-item" tabindex="0" role="button" aria-label="Contrôle après intervention" data-lightbox-caption-fr="Contrôle après intervention" data-lightbox-caption-en="Post-repair check"><img src="WhatsApp%20Image%202026-11-11%20at%2023.04.45%20%2865%29.jpg" alt="Contrôle après intervention" loading="lazy"><figcaption data-fr="Contrôle après intervention" data-en="Post-repair check">Contrôle après intervention</figcaption></figure></div></div><p class="gallery-hint" data-i18n="galleryHint">Les visites d’entreprise sont présentées comme des expériences pédagogiques. Les interventions photographiées correspondent à des travaux réalisés par mes soins.</p></div></section>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">×</button>
+    <img id="lightboxImage" alt="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
   <section id="education">
     <div class="container">
       <div class="section-title">
@@ -711,7 +796,7 @@
     fr: {
       navHome:"Accueil", navAbout:"À propos", navSkills:"Compétences",
       navExperience:"Expériences", navProjects:"Projets",
-      navEducation:"Formation", navContact:"Contact",
+      navEducation:"Formation", navContact:"Contact", navGallery:"Galerie",
       heroBadge:"PORTFOLIO PROFESSIONNEL",
       heroTitle:"Technicien en électrotechnique",
       heroText:"Passionné par les systèmes électriques, la maintenance, l'automatisme et les technologies informatiques. Je développe mes compétences à travers des expériences pratiques et des projets techniques.",
@@ -740,6 +825,9 @@
       job4Text:"Montage, entretien et dépannage d'antennes paraboliques.",
       projectsLabel:"RÉALISATIONS", projectsTitle:"Projets techniques",
       projectsIntro:"Une sélection de travaux académiques et techniques à découvrir.",
+      galleryLabel:"PHOTOGRAPHIES", galleryTitle:"Galerie de mes réalisations",
+      galleryIntro:"Des images de mes interventions, de mon prototype Arduino et de mes visites pédagogiques. Sélectionnez une photo pour l’agrandir.",
+      galleryHint:"Les visites d’entreprise sont présentées comme des expériences pédagogiques. Les interventions photographiées correspondent à des travaux réalisés par mes soins.",
       project1Title:"Barrière automatique avec Arduino",
       project1Text:"Projet académique de conception d'un système de commande automatisée à l'aide d'Arduino.",
       project2Title:"Étude de réseau électrique",
@@ -760,7 +848,7 @@
     en: {
       navHome:"Home", navAbout:"About", navSkills:"Skills",
       navExperience:"Experience", navProjects:"Projects",
-      navEducation:"Education", navContact:"Contact",
+      navEducation:"Education", navContact:"Contact", navGallery:"Gallery",
       heroBadge:"PROFESSIONAL PORTFOLIO",
       heroTitle:"Electrical Engineering Technician",
       heroText:"Passionate about electrical systems, maintenance, automation and information technology. I develop my skills through practical experience and technical projects.",
@@ -789,6 +877,9 @@
       job4Text:"Installation, maintenance and troubleshooting of satellite dishes.",
       projectsLabel:"ACHIEVEMENTS", projectsTitle:"Technical projects",
       projectsIntro:"A selection of academic and technical projects.",
+      galleryLabel:"PHOTOGRAPHS", galleryTitle:"Gallery of my work",
+      galleryIntro:"Photos of my field work, Arduino prototype and educational visits. Select a photo to enlarge it.",
+      galleryHint:"Company visits are presented as educational experiences. The photographed interventions are work carried out by me.",
       project1Title:"Arduino Automatic Barrier",
       project1Text:"Academic project involving the design of an automated control system using Arduino.",
       project2Title:"Electrical Installations",
@@ -827,7 +918,7 @@
       }
     });
 
-    langBtn.textContent = currentLang === "fr" ? "EN" : "FR";
+    document.querySelectorAll("#gallery [data-fr][data-en]").forEach(element => {\n      element.textContent = element.dataset[currentLang];\n    });\n    langBtn.textContent = currentLang === "fr" ? "EN" : "FR";
     document.title = currentLang === "fr"
       ? "Adom Hamdan Cozi | Portfolio professionnel"
       : "Adom Hamdan Cozi | Professional Portfolio";
@@ -844,6 +935,38 @@
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
     });
+  });
+
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxCaption = document.getElementById("lightboxCaption");
+  const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    lightboxImage.src = "";
+  };
+  document.querySelectorAll(".gallery-item").forEach(item => {
+    const openLightbox = () => {
+      const image = item.querySelector("img");
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent = item.dataset["lightboxCaption" + (currentLang === "fr" ? "Fr" : "En")];
+      lightbox.classList.add("open");
+    };
+    item.addEventListener("click", openLightbox);
+    item.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox();
+      }
+    });
+  });
+  document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeLightbox();
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
