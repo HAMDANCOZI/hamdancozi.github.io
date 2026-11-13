@@ -327,11 +327,20 @@
       transition: .25s;
     }
     .gallery-item:hover { transform: translateY(-4px); border-color: var(--blue); }
-    .gallery-description { margin: -8px 0 18px; color: var(--muted); line-height: 1.65; }\n    .gallery-item video { display:block; width:100%; height:220px; object-fit:contain; background:#050b16; }
+    .gallery-description { margin: -8px 0 18px; color: var(--muted); line-height: 1.65; }
+    .gallery-item video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 360px;
+      object-fit: contain;
+      background: #050b16;
+    }
     .gallery-item img {
       display: block;
       width: 100%;
-      height: 220px;
+      height: auto;
+      max-height: 320px;
       object-fit: contain;
       background: var(--surface2);
     }
@@ -449,10 +458,12 @@
       .menu-btn { display: block; }
       .about-grid { grid-template-columns: 1fr; }
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media(max-width: 550px) {
       .cards-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
       .hero { min-height: 570px; padding: 65px 0; }
       section { padding: 65px 0; }
       .contact-box { padding: 25px; }
@@ -976,6 +987,12 @@
     document.querySelectorAll("#gallery [data-fr][data-en]").forEach(element => {
       element.textContent = element.dataset[currentLang];
     });
+    document.querySelectorAll(".gallery-item[data-lightbox-caption-fr][data-lightbox-caption-en]").forEach(item => {
+      const caption = item.dataset["lightboxCaption" + (currentLang === "fr" ? "Fr" : "En")];
+      item.setAttribute("aria-label", caption);
+      const image = item.querySelector("img");
+      if (image) image.alt = caption;
+    });
     langBtn.textContent = currentLang === "fr" ? "EN" : "FR";
     document.title = currentLang === "fr"
       ? "Adom Hamdan Cozi | Portfolio professionnel"
@@ -1004,9 +1021,11 @@
     lightboxImage.src = "";
   };
   document.querySelectorAll(".gallery-item").forEach(item => {
+    const image = item.querySelector("img");
+    if (!image) return;
+
     const openLightbox = () => {
-      const image = item.querySelector("img");
-      lightboxImage.src = image.src;
+      lightboxImage.src = image.currentSrc || image.src;
       lightboxImage.alt = image.alt;
       lightboxCaption.textContent = item.dataset["lightboxCaption" + (currentLang === "fr" ? "Fr" : "En")];
       lightbox.classList.add("open");
